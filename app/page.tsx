@@ -1,25 +1,25 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import AudioMixer from "@/components/audio-mixer"
-import FocusTimer from "@/components/focus-timer"
-import BackgroundSelector from "@/components/background-selector"
-import { Leaf } from "lucide-react"
-import { cn } from "@/lib/utils"
+import { useState } from "react";
+import AudioMixer from "@/components/audio-mixer";
+import FocusTimer from "@/components/focus-timer";
+import BackgroundSelector from "@/components/background-selector";
+import { Leaf } from "lucide-react";
+import { cn } from "@/lib/utils";
 
-type BackgroundCategory = "color" | "image" | "pattern"
+type BackgroundCategory = "color" | "image" | "pattern";
 
 type BackgroundOption = {
-  id: string
-  name: string
-  value: string
-  thumbnail?: string
-}
+  id: string;
+  name: string;
+  value: string;
+  thumbnail?: string;
+};
 
 export default function Home() {
   const [background, setBackground] = useState<{
-    type: BackgroundCategory
-    option: BackgroundOption
+    type: BackgroundCategory;
+    option: BackgroundOption;
   }>({
     type: "color",
     option: {
@@ -27,24 +27,27 @@ export default function Home() {
       name: "Forest",
       value: "bg-emerald-700",
     },
-  })
+  });
 
   const getBackgroundStyle = () => {
     if (background.type === "color") {
-      return { className: background.option.value }
+      return { className: background.option.value };
     } else {
       return {
         className: "bg-cover bg-center",
         style: { backgroundImage: background.option.value },
-      }
+      };
     }
-  }
+  };
 
-  const bgStyle = getBackgroundStyle()
+  const bgStyle = getBackgroundStyle();
 
   return (
     <main
-      className={cn("min-h-screen text-stone-800 relative overflow-hidden", bgStyle.className)}
+      className={cn(
+        "min-h-screen text-stone-800 relative overflow-hidden",
+        bgStyle.className
+      )}
       style={bgStyle.style}
     >
       <div className="relative z-10 p-4">
@@ -60,6 +63,20 @@ export default function Home() {
       <AudioMixer />
       <FocusTimer />
       <BackgroundSelector onSelect={setBackground} />
+      <footer className="absolute bottom-2 left-1/2 -translate-x-1/2 text-xs text-white z-10">
+        <p>
+          Zen Focus by{" "}
+          <a
+            href="https://desprets.net"
+            className="underline hover:opacity-80 transition"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Ben Desprets
+          </a>
+          . All assets belong to their respective owners.
+        </p>
+      </footer>
     </main>
-  )
+  );
 }
