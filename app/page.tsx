@@ -45,7 +45,7 @@ export default function Home() {
   return (
     <main
       className={cn(
-        "min-h-screen text-stone-800 relative overflow-hidden",
+        "min-h-screen text-stone-800 relative overflow-hidden pb-20",
         bgStyle.className
       )}
       style={bgStyle.style}
@@ -53,7 +53,7 @@ export default function Home() {
       <div className="relative z-10 p-4">
         <header className="mb-4 flex items-center">
           <div className="flex items-center gap-1">
-            <Leaf className="h-4 w-4 text-white" />
+            <Leaf className="h-8 w-8 text-white" />
             <h1 className="text-lg font-bold text-white">Zen Focus</h1>
           </div>
         </header>
@@ -63,19 +63,24 @@ export default function Home() {
       <AudioMixer />
       <FocusTimer />
       <BackgroundSelector onSelect={setBackground} />
+
+      {/* Footer */}
       <footer className="absolute bottom-2 left-1/2 -translate-x-1/2 text-xs text-white z-10">
-        <p>
-          Zen Focus by{" "}
-          <a
-            href="https://desprets.net"
-            className="underline hover:opacity-80 transition"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Ben Desprets
-          </a>
-          . All assets belong to their respective owners.
-        </p>
+        <div className="absolute inset-0 bg-black/20 z-0" />
+        <div className="relative z-10">
+          <p>
+            Zen Focus by{" "}
+            <a
+              href="https://desprets.net"
+              className="underline hover:opacity-80 transition"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Ben Desprets
+            </a>
+            . All assets belong to their respective owners.
+          </p>
+        </div>
       </footer>
     </main>
   );
